@@ -416,7 +416,7 @@ p { margin: 0; }
   background: linear-gradient(180deg, transparent 0%, rgba(1, 33, 105, 0.82) 70%, rgba(1, 33, 105, 0.95) 100%);
 }
 .feature-copy h3 {
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.03em;
   line-height: 1.3;
   color: #fff;
@@ -427,8 +427,8 @@ p { margin: 0; }
 .section-head { margin-bottom: 36px; }
 .plans {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
   align-items: stretch;
 }
 .plan {
@@ -437,10 +437,11 @@ p { margin: 0; }
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 24px 22px 22px;
+  padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  min-width: 0;
   box-shadow: 0 10px 28px rgba(1, 33, 105, 0.04);
   transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
 }
@@ -470,7 +471,7 @@ p { margin: 0; }
   min-height: 28px;
 }
 .plan h3 {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -641,7 +642,7 @@ p { margin: 0; }
   margin-bottom: 10px;
 }
 .device-guide h3 {
-  font-size: clamp(22px, 2.4vw, 28px);
+  font-size: clamp(20px, 2.2vw, 26px);
   letter-spacing: -0.04em;
   margin-bottom: 22px;
   max-width: 22ch;
@@ -695,7 +696,7 @@ p { margin: 0; }
   gap: 28px 32px;
 }
 .cards article h3, .checks h3, .steps h3 {
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: -0.03em;
   margin-bottom: 8px;
 }
@@ -1063,7 +1064,7 @@ p { margin: 0; }
 }
 .media-card .copy { padding: 20px 20px 24px; }
 .media-card .copy h3 {
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.03em;
   margin-bottom: 10px;
 }
@@ -1187,11 +1188,16 @@ body.menu-open {
   to { transform: translateX(calc(-50% - 9px)); }
 }
 
+@media (max-width: 1100px) {
+  .plans {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
 @media (max-width: 1020px) {
-  .hero-grid, .split, .plans, .reseller-top, .close-grid { grid-template-columns: 1fr; }
+  .hero-grid, .split, .reseller-top, .close-grid { grid-template-columns: 1fr; }
   .steps, .point-grid { grid-template-columns: 1fr 1fr; }
   .watch-grid { grid-template-columns: 1fr 1fr; }
-  .plans { grid-template-columns: 1fr 1fr; }
   .devices-panel { grid-template-columns: 1fr; }
   .hero-media { margin: 12px 0 0; }
   .footer-top {
@@ -1199,6 +1205,10 @@ body.menu-open {
     gap: 36px;
     padding: 48px 0 40px;
   }
+  .plan {
+    padding: 26px 22px 22px;
+  }
+  .price { font-size: 44px; }
 }
 @media (max-width: 900px) {
   .site-nav {
@@ -1257,12 +1267,12 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 4px;
+    padding: 14px 4px;
     border-bottom: 1px solid var(--line);
     color: var(--navy);
     text-decoration: none;
     font-family: var(--font-display), "Montserrat", sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.03em;
   }
@@ -1288,16 +1298,58 @@ body.menu-open {
   .hero-grid, .split, .plans, .cards, .benefits, .point-grid, .watch-grid, .reseller-top, .close-grid, .footer-links {
     grid-template-columns: 1fr;
   }
+  .plans {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .plan {
+    padding: 28px 22px 24px;
+    border-radius: 16px;
+  }
+  .plan-name-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .plan h3 {
+    font-size: 13px;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+  .price {
+    font-size: 44px;
+    margin: 14px 0 8px;
+  }
+  .duration {
+    font-size: 15px;
+  }
+  .plan ul {
+    padding: 20px 0 24px;
+  }
+  .plan li {
+    font-size: 15px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .plan .btn {
+    height: 48px;
+    font-size: 14px;
+  }
   body { font-size: 15px; }
+  .wrap {
+    width: min(var(--max), calc(100% - 40px));
+    padding-inline: 0;
+  }
   .section { padding: 64px 0; }
   .section h2,
   .page-intro h1,
   .feature-strip h2,
   .watch-head h2,
   .close h2 {
-    font-size: clamp(30px, 8.2vw, 38px);
-    letter-spacing: -1px;
-    max-width: 16ch;
+    font-size: clamp(24px, 6.4vw, 30px);
+    letter-spacing: -0.8px;
+    max-width: none;
   }
   .lede,
   .section p,
@@ -1308,28 +1360,37 @@ body.menu-open {
     font-size: 14px;
     line-height: 1.6;
   }
-  .lede { margin-top: 12px; }
+  .lede { margin-top: 12px; max-width: none; }
   .section-head { margin-bottom: 28px; }
 
   .hero {
-    padding: 28px 0 32px;
+    padding: 24px 0 28px;
     min-height: calc(100svh - var(--nav));
     display: flex;
     align-items: center;
   }
+  .hero .wrap {
+    width: min(var(--max), calc(100% - 40px));
+    box-sizing: border-box;
+  }
   .hero-grid {
-    gap: 18px;
+    gap: 16px;
     width: 100%;
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
   .hero h1 {
     margin-top: 10px;
-    font-size: clamp(28px, 7.5vw, 34px);
-    letter-spacing: -1.2px;
-    max-width: 18ch;
-    line-height: 1.15;
+    font-size: clamp(24px, 6.6vw, 30px);
+    letter-spacing: -1px;
+    max-width: none;
+    line-height: 1.18;
   }
   .hero .intro {
     margin-top: 12px;
+    max-width: none;
     font-size: 13.5px;
     line-height: 1.55;
   }
@@ -1339,6 +1400,7 @@ body.menu-open {
     flex-wrap: nowrap;
     gap: 8px;
     margin-top: 16px;
+    width: 100%;
   }
   .hero-actions .btn {
     flex: 1 1 0;
@@ -1350,15 +1412,15 @@ body.menu-open {
   }
   .hero-media {
     width: 100%;
-    max-width: 280px;
-    margin-inline: auto;
+    max-width: none;
+    margin-inline: 0;
   }
   .hero-flag {
     border-radius: 10px;
   }
 
   .media-card-photo { height: 260px; }
-  .media-card .copy h3 { font-size: 17px; }
+  .media-card .copy h3 { font-size: 16px; }
   .device-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .device-card { min-height: 86px; padding: 10px; }
   .device-card span { font-size: 11px; }
