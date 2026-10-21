@@ -574,6 +574,9 @@ p { margin: 0; }
   border-radius: 18px;
   padding: 18px;
   background: #fff;
+  overflow-anchor: none;
+  position: relative;
+  z-index: 1;
 }
 .devices-picker-label {
   font-family: var(--font-display), "Montserrat", sans-serif;
@@ -604,6 +607,9 @@ p { margin: 0; }
   text-align: left;
   cursor: pointer;
   font: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  scroll-margin: 0;
   transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
 }
 .device-card span {
@@ -1371,13 +1377,24 @@ body.menu-open {
     max-width: none;
   }
   .lede,
-  .section p,
+  .section p:not(.price):not(.duration),
   .media-card .copy p,
   .plan ul,
   .faq-answer,
   .speed-list {
     font-size: 14px;
     line-height: 1.6;
+  }
+  .plan .price {
+    font-size: clamp(56px, 15vw, 68px) !important;
+    letter-spacing: -2.6px;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .plan .price span {
+    font-size: 14px !important;
+    transform: none;
+    vertical-align: baseline;
   }
   .lede { margin-top: 12px; max-width: none; }
   .section-head { margin-bottom: 28px; }
@@ -1443,13 +1460,20 @@ body.menu-open {
   .device-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .device-card { min-height: 86px; padding: 10px; }
   .device-card span { font-size: 11px; }
+  .devices-panel {
+    overflow-anchor: none;
+  }
   .device-guide {
-    min-height: 320px;
-    scroll-margin-top: 0;
+    min-height: 280px;
+    scroll-margin: 0;
+    overflow-anchor: none;
   }
   .devices-picker,
-  .device-card {
+  .device-card,
+  .device-guide h3,
+  .device-steps {
     scroll-margin: 0;
+    overflow-anchor: none;
   }
   .feature-card { height: 380px; width: min(340px, 86vw); }
   .feature-track { animation-duration: 28s; }
