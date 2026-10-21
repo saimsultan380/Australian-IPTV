@@ -33,7 +33,7 @@ export function SiteHeader() {
   return (
     <header className={scrolled ? "site-nav is-scrolled" : "site-nav"} id="top">
       <div className="wrap nav-bar">
-        <a className="brand" href="#top" onClick={() => setOpen(false)}>
+        <a className="brand" href="/#top" onClick={() => setOpen(false)}>
           <FlagMark width={32} height={16} className="flag-mark brand-flag" />
           <span>
             {site.name}
@@ -45,14 +45,16 @@ export function SiteHeader() {
           <ul className="nav-links">
             {navigation.map((link) => (
               <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href} onClick={() => setOpen(false)}>
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="nav-end">
-          <a className="btn btn-primary nav-cta" href="#plans">
+          <a className="btn btn-primary nav-cta" href="/#plans" onClick={() => setOpen(false)}>
             Choose a plan
           </a>
           <button
@@ -91,7 +93,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="mobile-menu-actions">
-            <a className="btn btn-primary" href="#plans" onClick={() => setOpen(false)}>
+            <a className="btn btn-primary" href="/#plans" onClick={() => setOpen(false)}>
               Choose a plan
             </a>
             <a

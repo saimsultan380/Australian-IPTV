@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
 import { FeatureStrip } from "@/components/sections/feature-strip";
 import { Plans } from "@/components/sections/plans";
@@ -10,10 +11,15 @@ import { Reseller } from "@/components/sections/reseller";
 import { Speed } from "@/components/sections/speed";
 import { Faq } from "@/components/sections/faq";
 import { Closing } from "@/components/sections/closing";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbJsonLd, breadcrumbTrail, buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata("home");
 
 export default function HomePage() {
   return (
     <main>
+      <JsonLd data={breadcrumbJsonLd(breadcrumbTrail("home"))} />
       <Hero />
       <FeatureStrip />
       <Plans />

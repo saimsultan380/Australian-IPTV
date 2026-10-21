@@ -1,15 +1,17 @@
 import { plans, plansIntro } from "@/lib/content";
 import { whatsapp } from "@/lib/whatsapp";
 
-export function Plans() {
+export function Plans({ hideIntro = false }: { hideIntro?: boolean } = {}) {
   return (
     <section className="section" id="plans">
       <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">{plansIntro.eyebrow}</p>
-          <h2>{plansIntro.title}</h2>
-          <p className="lede">{plansIntro.lede}</p>
-        </div>
+        {hideIntro ? null : (
+          <div className="section-head">
+            <p className="eyebrow">{plansIntro.eyebrow}</p>
+            <h2>{plansIntro.title}</h2>
+            <p className="lede">{plansIntro.lede}</p>
+          </div>
+        )}
         <div className="plans">
           {plans.map((plan) => (
             <article className={plan.featured ? "plan is-featured" : "plan"} key={plan.name}>

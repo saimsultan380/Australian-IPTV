@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="wrap footer-top">
         <div className="footer-brand">
-          <a className="footer-logo" href="#top">
+          <a className="footer-logo" href="/#top">
             <FlagMark width={40} height={20} className="flag-mark footer-flag" />
             <span>{site.name}</span>
           </a>
@@ -32,16 +32,16 @@ export function SiteFooter() {
             <p className="col-label">Setup</p>
             <ul>
               <li>
-                <a href="#devices">Compatible devices</a>
+                <a href="/#devices">Compatible devices</a>
               </li>
               <li>
-                <a href="#firestick">Firestick guide</a>
+                <a href="/#firestick">Firestick guide</a>
               </li>
               <li>
-                <a href="#start">Getting started</a>
+                <a href="/#start">Getting started</a>
               </li>
               <li>
-                <a href="#speed">Internet speed</a>
+                <a href="/#speed">Internet speed</a>
               </li>
             </ul>
           </div>
@@ -59,7 +59,7 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="#reseller">Reseller panel</a>
+                <a href="/#reseller">Reseller panel</a>
               </li>
             </ul>
           </div>
@@ -72,11 +72,9 @@ export function SiteFooter() {
             © {year} {site.name}. Streaming for Australian households.
           </p>
           <div className="footer-bottom-links">
-            <a href="#choose">Buying guide</a>
-            <a href="#faq">FAQs</a>
-            <a href={whatsapp.supportHref} target="_blank" rel="noopener noreferrer">
-              Support
-            </a>
+            <a href="/#choose">Buying guide</a>
+            <a href="/#faq">FAQs</a>
+            <a href="/#support">Support</a>
           </div>
         </div>
       </div>

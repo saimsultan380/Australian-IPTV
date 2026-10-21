@@ -5,7 +5,8 @@ import { FlagDefs } from "@/components/ui/flag-mark";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
-import { metadataCopy } from "@/lib/content";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationJsonLd, websiteJsonLd, getSeoPage } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -23,35 +24,31 @@ const body = Poppins({
   display: "swap",
 });
 
+const home = getSeoPage("home");
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: metadataCopy.title,
-  description: metadataCopy.description,
+  title: {
+    default: home.title,
+    template: `%s | ${site.name}`,
+  },
+  description: home.description,
   applicationName: site.name,
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
-    title: metadataCopy.title,
-    description: metadataCopy.description,
+    siteName: site.name,
     locale: "en_AU",
     type: "website",
-    siteName: site.name,
-    images: [
-      {
-        url: "/images/og-au-flag.png",
-        width: 1200,
-        height: 630,
-        alt: "Australian flag — Australians IPTV",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: metadataCopy.title,
-    description: metadataCopy.description,
-    images: ["/images/og-au-flag.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -63,6 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en-AU" className={`${display.variable} ${body.variable}`}>
       <body>
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <FlagDefs />
         <SiteHeader />
         {children}

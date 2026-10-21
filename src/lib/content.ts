@@ -15,7 +15,7 @@ export const hero = {
     "Get high-quality HD 4K IPTV in Australia from top-rated IPTV providers at discounted pricing. Australian IPTV offers a premium IPTV streaming experience with live sports, movies, series, news, local channels, TV shows, and more.",
     "Buy an AU IPTV Subscription from our trusted IPTV services for Australia. Choose a 12-month IPTV Australia plan and save 100$+.",
   ],
-  primary: { href: "#plans", label: "Choose Aus IPTV Plan" },
+  primary: { href: "/#plans", label: "Choose Aus IPTV Plan" },
   secondary: { href: whatsapp.href, label: "WhatsApp Us" },
 };
 
@@ -488,21 +488,21 @@ export const closing = {
     "Australians IPTV provides a starting point for exploring available subscription options, installation guidance and compatible streaming setups.",
     "Review the plans, check the service details and choose the option that fits your viewing needs.",
   ],
-  primary: { href: "#plans", label: "Explore Subscription Plans" },
+  primary: { href: "/#plans", label: "Explore Subscription Plans" },
   secondary: { href: whatsapp.supportHref, label: "Contact Support" },
 };
 
 export const footer = {
   blurb: "HD and 4K streaming, live sports, movies, and local channels for households across Australia.",
   explore: [
-    { href: "#plans", label: "Plans" },
-    { href: "#devices", label: "Installation guides" },
-    { href: "#watch", label: "What you can watch" },
-    { href: "#faq", label: "FAQs" },
+    { href: "/#plans", label: "Plans" },
+    { href: "/#devices", label: "Installation guides" },
+    { href: "/#watch", label: "What you can watch" },
+    { href: "/#faq", label: "FAQs" },
   ],
   contact: [
     { href: whatsapp.href, label: "WhatsApp Us" },
     { href: whatsapp.supportHref, label: "Contact Support" },
-    { href: "#reseller", label: "Reseller panel" },
+    { href: "/#reseller", label: "Reseller panel" },
   ],
 };
