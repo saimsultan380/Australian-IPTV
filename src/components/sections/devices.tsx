@@ -1,33 +1,26 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DevicePickIcon } from "@/components/ui/graphics";
 import { devices, devicesIntro, guides } from "@/lib/content";
 
 export function Devices() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const scrollLockRef = useRef<number | null>(null);
+  const [hasSelected, setHasSelected] = useState(false);
+  const guideRef = useRef<HTMLDivElement>(null);
   const activeDevice = devices[activeIndex];
   const activeGuide = guides[activeDevice.guideIndex];
 
-  useLayoutEffect(() => {
-    if (scrollLockRef.current === null) return;
-    const y = scrollLockRef.current;
-    const html = document.documentElement;
-    const previous = html.style.scrollBehavior;
-    html.style.scrollBehavior = "auto";
-    window.scrollTo(0, y);
-    const frame = requestAnimationFrame(() => {
-      window.scrollTo(0, y);
-      html.style.scrollBehavior = previous;
-      scrollLockRef.current = null;
+  useEffect(() => {
+    if (!hasSelected || !guideRef.current) return;
+    guideRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
     });
-    return () => cancelAnimationFrame(frame);
-  }, [activeIndex]);
+  }, [activeIndex, hasSelected]);
 
-  const selectDevice = (index: number, button: HTMLButtonElement) => {
-    scrollLockRef.current = window.scrollY;
-    button.focus({ preventScroll: true });
+  const selectDevice = (index: number) => {
+    setHasSelected(true);
     setActiveIndex(index);
   };
 
@@ -53,10 +46,8 @@ export function Devices() {
                     role="tab"
                     aria-selected={selected}
                     aria-controls="device-guide-panel"
-                    tabIndex={selected ? 0 : -1}
                     className={selected ? "device-card is-active" : "device-card"}
-                    onMouseDown={(event) => event.preventDefault()}
-                    onClick={(event) => selectDevice(index, event.currentTarget)}
+                    onClick={() => selectDevice(index)}
                   >
                     <DevicePickIcon icon={device.icon} />
                     <span>{device.name}</span>
@@ -66,7 +57,12 @@ export function Devices() {
             </div>
           </div>
 
-          <div id="device-guide-panel" className="device-guide" role="tabpanel">
+          <div
+            ref={guideRef}
+            id="device-guide-panel"
+            className="device-guide"
+            role="tabpanel"
+          >
             <p className="device-guide-kicker">{activeDevice.name}</p>
             <h3>{activeGuide.title}</h3>
             <ol className="device-steps">
