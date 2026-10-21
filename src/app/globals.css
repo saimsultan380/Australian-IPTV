@@ -492,18 +492,22 @@ p { margin: 0; }
 .price {
   font-family: var(--font-display), "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 48px;
-  letter-spacing: -2px;
+  font-size: 56px;
+  letter-spacing: -2.4px;
   line-height: 1;
-  margin: 16px 0 8px;
-  color: var(--ink);
+  margin: 18px 0 10px;
+  color: var(--navy);
+}
+.plan.is-featured .price {
+  color: var(--red);
 }
 .price span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--muted);
-  margin-left: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 .duration {
   color: var(--muted);
@@ -1208,7 +1212,7 @@ body.menu-open {
   .plan {
     padding: 26px 22px 22px;
   }
-  .price { font-size: 44px; }
+  .price { font-size: 52px; }
 }
 @media (max-width: 900px) {
   .site-nav {
@@ -1318,8 +1322,12 @@ body.menu-open {
     padding: 7px 12px;
   }
   .price {
-    font-size: 44px;
-    margin: 14px 0 8px;
+    font-size: 52px;
+    letter-spacing: -2.2px;
+    margin: 16px 0 10px;
+  }
+  .price span {
+    font-size: 13px;
   }
   .duration {
     font-size: 15px;
