@@ -1288,6 +1288,75 @@ body.menu-open {
   .hero-grid, .split, .plans, .cards, .benefits, .point-grid, .watch-grid, .reseller-top, .close-grid, .footer-links {
     grid-template-columns: 1fr;
   }
+  body { font-size: 15px; }
+  .section { padding: 64px 0; }
+  .section h2,
+  .page-intro h1,
+  .feature-strip h2,
+  .watch-head h2,
+  .close h2 {
+    font-size: clamp(30px, 8.2vw, 38px);
+    letter-spacing: -1px;
+    max-width: 16ch;
+  }
+  .lede,
+  .section p,
+  .media-card .copy p,
+  .plan ul,
+  .faq-answer,
+  .speed-list {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .lede { margin-top: 12px; }
+  .section-head { margin-bottom: 28px; }
+
+  .hero {
+    padding: 28px 0 32px;
+    min-height: calc(100svh - var(--nav));
+    display: flex;
+    align-items: center;
+  }
+  .hero-grid {
+    gap: 18px;
+    width: 100%;
+  }
+  .hero h1 {
+    margin-top: 10px;
+    font-size: clamp(28px, 7.5vw, 34px);
+    letter-spacing: -1.2px;
+    max-width: 18ch;
+    line-height: 1.15;
+  }
+  .hero .intro {
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .hero .intro p + p { margin-top: 8px; }
+  .hero-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .hero-actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 42px;
+    padding: 0 10px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .hero-media {
+    width: 100%;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .hero-flag {
+    border-radius: 10px;
+  }
+
   .media-card-photo { height: 260px; }
   .media-card .copy h3 { font-size: 17px; }
   .device-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -1296,9 +1365,6 @@ body.menu-open {
   .feature-card { height: 380px; width: min(340px, 86vw); }
   .feature-track { animation-duration: 28s; }
   .steps { grid-template-columns: 1fr; }
-  .section { padding: 72px 0; }
-  .hero { padding-top: 72px; }
-  .hero-media { width: 100%; max-width: 420px; }
   .speed-art { width: 100%; max-width: 280px; }
   .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
   .footer-links { gap: 28px 20px; }
