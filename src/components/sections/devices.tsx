@@ -9,6 +9,15 @@ export function Devices() {
   const activeDevice = devices[activeIndex];
   const activeGuide = guides[activeDevice.guideIndex];
 
+  const selectDevice = (index: number) => {
+    const scrollY = window.scrollY;
+    setActiveIndex(index);
+    // Keep the picker in place on mobile — avoid jump to guide content below.
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+    });
+  };
+
   return (
     <section className="section" id="devices">
       <div className="wrap">
@@ -19,7 +28,7 @@ export function Devices() {
         </div>
 
         <div className="devices-panel">
-          <div className="devices-picker">
+          <div className="devices-picker" id="firestick">
             <p className="devices-picker-label">Compatible devices</p>
             <div className="device-cards" role="tablist" aria-label="Choose a device">
               {devices.map((device, index) => {
@@ -29,10 +38,11 @@ export function Devices() {
                     key={device.name}
                     type="button"
                     role="tab"
-                    id={device.name === "Amazon Firestick" ? "firestick" : undefined}
                     aria-selected={selected}
+                    aria-controls="device-guide-panel"
                     className={selected ? "device-card is-active" : "device-card"}
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => selectDevice(index)}
+                    onMouseDown={(event) => event.preventDefault()}
                   >
                     <DevicePickIcon icon={device.icon} />
                     <span>{device.name}</span>
@@ -42,7 +52,12 @@ export function Devices() {
             </div>
           </div>
 
-          <div className="device-guide" role="tabpanel" aria-live="polite">
+          <div
+            id="device-guide-panel"
+            className="device-guide"
+            role="tabpanel"
+            aria-live="polite"
+          >
             <p className="device-guide-kicker">{activeDevice.name}</p>
             <h3>{activeGuide.title}</h3>
             <ol className="device-steps">

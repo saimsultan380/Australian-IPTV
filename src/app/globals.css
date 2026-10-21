@@ -567,6 +567,7 @@ p { margin: 0; }
   gap: 28px;
   align-items: start;
   margin-top: 8px;
+  overflow-anchor: none;
 }
 .devices-picker {
   border: 1px solid var(--line);
@@ -635,6 +636,7 @@ p { margin: 0; }
   padding: 28px 26px;
   background: #fff;
   min-height: 100%;
+  overflow-anchor: none;
 }
 .device-guide-kicker {
   font-family: var(--font-display), "Montserrat", sans-serif;
@@ -1212,7 +1214,7 @@ body.menu-open {
   .plan {
     padding: 26px 22px 22px;
   }
-  .price { font-size: 52px; }
+  .price { font-size: 58px; }
 }
 @media (max-width: 900px) {
   .site-nav {
@@ -1322,15 +1324,24 @@ body.menu-open {
     padding: 7px 12px;
   }
   .price {
-    font-size: 52px;
-    letter-spacing: -2.2px;
-    margin: 16px 0 10px;
+    font-size: clamp(60px, 16vw, 72px);
+    letter-spacing: -2.8px;
+    line-height: 0.95;
+    margin: 18px 0 12px;
+    color: var(--navy);
+  }
+  .plan.is-featured .price {
+    color: var(--red);
   }
   .price span {
-    font-size: 13px;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 8px;
+    transform: translateY(-6px);
   }
   .duration {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
   }
   .plan ul {
     padding: 20px 0 24px;
@@ -1432,6 +1443,14 @@ body.menu-open {
   .device-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .device-card { min-height: 86px; padding: 10px; }
   .device-card span { font-size: 11px; }
+  .device-guide {
+    min-height: 320px;
+    scroll-margin-top: 0;
+  }
+  .devices-picker,
+  .device-card {
+    scroll-margin: 0;
+  }
   .feature-card { height: 380px; width: min(340px, 86vw); }
   .feature-track { animation-duration: 28s; }
   .steps { grid-template-columns: 1fr; }
