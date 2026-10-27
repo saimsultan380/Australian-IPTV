@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import Script from "next/script";
 import { Montserrat, Poppins } from "next/font/google";
 import { FlagDefs } from "@/components/ui/flag-mark";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,6 +10,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { organizationJsonLd, websiteJsonLd, getSeoPage } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+const GA_ID = "G-5QFS3CBM9V";
 
 const display = Montserrat({
   subsets: ["latin"],
@@ -63,6 +66,15 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en-AU" className={`${display.variable} ${body.variable}`}>
       <body>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <FlagDefs />
         <SiteHeader />
