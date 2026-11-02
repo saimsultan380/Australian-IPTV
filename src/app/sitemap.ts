@@ -1,14 +1,17 @@
 import type { MetadataRoute } from "next";
 import { canonicalUrl } from "@/lib/site";
-import { seoPages } from "@/lib/seo";
+import { getSeoPage } from "@/lib/seo";
 
+/** Single-homepage site — only the root URL belongs in the sitemap. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const home = getSeoPage("home");
 
-  return seoPages.map((page) => ({
-    url: canonicalUrl(page.path),
-    lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
+  return [
+    {
+      url: canonicalUrl(home.path),
+      lastModified: new Date(),
+      changeFrequency: home.changeFrequency,
+      priority: home.priority,
+    },
+  ];
 }

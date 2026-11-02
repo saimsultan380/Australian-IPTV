@@ -123,7 +123,8 @@ export function getSeoPage(slug: string): SeoPage {
 
 export function buildPageMetadata(slug: string, extras?: Partial<Metadata>): Metadata {
   const page = getSeoPage(slug);
-  const url = canonicalUrl(page.path);
+  const isHome = page.slug === "home";
+  const homeUrl = canonicalUrl("/");
 
   return {
     title: {
@@ -131,12 +132,16 @@ export function buildPageMetadata(slug: string, extras?: Partial<Metadata>): Met
     },
     description: page.description,
     alternates: {
-      canonical: url,
+      // Single-homepage site: always point to `/`
+      canonical: homeUrl,
     },
+    robots: isHome
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
     openGraph: {
       title: page.title,
       description: page.description,
-      url,
+      url: homeUrl,
       siteName: site.name,
       locale: "en_AU",
       type: "website",
