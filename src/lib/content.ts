@@ -499,6 +499,7 @@ export const footer = {
     { href: "/#devices", label: "Installation guides" },
     { href: "/#watch", label: "What you can watch" },
     { href: "/#faq", label: "FAQs" },
+    { href: "/blog/", label: "Blog" },
   ],
   contact: [
     { href: whatsapp.href, label: "WhatsApp Us" },

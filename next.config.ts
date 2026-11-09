@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
       { source: "/speed/", destination: "/internet-speed/", permanent: true },
       { source: "/start", destination: "/getting-started/", permanent: true },
       { source: "/start/", destination: "/getting-started/", permanent: true },
+      { source: "/blogs", destination: "/blog/", permanent: true },
+      { source: "/blogs/", destination: "/blog/", permanent: true },
     ];
   },
 };

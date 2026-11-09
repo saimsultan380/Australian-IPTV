@@ -5,4 +5,5 @@ export const navigation = [
   { href: "/#start", label: "Start" },
   { href: "/#reseller", label: "Reseller" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/blog/", label: "Blog" },
 ] as const;

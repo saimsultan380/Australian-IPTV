@@ -1,12 +1,27 @@
+import { site } from "@/lib/site";
+
 const NUMBER = "447532818129";
+const SITE_TAG = `Website: ${site.url}`;
+
+function withSite(message: string) {
+  return `${message}\n\n${SITE_TAG}`;
+}
 
 const messages = {
-  default:
-    "Hi! I'm interested in Australian IPTV. Please share available plans, pricing, and how to get started.",
-  support:
-    "Hi! I need help with my Australian IPTV subscription (setup, activation, or streaming). Please assist.",
-  plan: (name: string, duration: string, price: string) =>
-    `Hi! I'm interested in the ${name} plan (${duration} — ${price} AUD) for Australian IPTV. Please help me subscribe and activate.`,
+  default: withSite("I need IPTV Australia free trial"),
+  support: withSite("I need help with IPTV Australia (setup, activation, or streaming)"),
+  plan: (name: string, duration: string, price: string) => {
+    const durationLabel =
+      duration === "12 Months"
+        ? "1 year"
+        : duration === "1 Month"
+          ? "1 month"
+          : duration.toLowerCase();
+
+    return withSite(
+      `I need IPTV Australia ${durationLabel} subscription (${name} — ${price} AUD)`,
+    );
+  },
 } as const;
 
 function buildHref(text: string) {
@@ -19,6 +34,7 @@ export const whatsapp = {
   message: messages.default,
   href: buildHref(messages.default),
   supportHref: buildHref(messages.support),
+  trialHref: buildHref(messages.default),
   planHref(name: string, duration: string, price: string) {
     return buildHref(messages.plan(name, duration, price));
   },
