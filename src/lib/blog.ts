@@ -1,26 +1,7 @@
-export type BlogBlock =
-  | { type: "p"; text: string }
-  | { type: "h2"; text: string }
-  | { type: "h3"; text: string }
-  | { type: "ol"; items: string[] }
-  | { type: "ul"; items: string[] }
-  | { type: "table"; headers: string[]; rows: string[][] }
-  | { type: "image"; src: string; alt: string; caption?: string };
+import type { BlogPost } from "@/lib/blog-types";
+import { installGuidePost } from "@/lib/blog-install-guide";
 
-export type BlogPost = {
-  slug: string;
-  path: string;
-  title: string;
-  seoTitle: string;
-  description: string;
-  date: string;
-  dateLabel: string;
-  category: string;
-  excerpt: string;
-  coverImage: string;
-  coverAlt: string;
-  blocks: BlogBlock[];
-};
+export type { BlogBlock, BlogPost } from "@/lib/blog-types";
 
 export const blogIndex = {
   title: "Blog",
@@ -28,6 +9,7 @@ export const blogIndex = {
 };
 
 export const posts: BlogPost[] = [
+  installGuidePost,
   {
     slug: "iptv-australia-beginners-guide",
     path: "/iptv-australia-beginners-guide/",
@@ -1018,5 +1000,5 @@ export function getPost(slug: string) {
 }
 
 export function getAllPosts() {
-  return posts;
+  return [...posts].sort((a, b) => b.date.localeCompare(a.date));
 }
