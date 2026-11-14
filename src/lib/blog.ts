@@ -1,5 +1,7 @@
 import type { BlogPost } from "@/lib/blog-types";
+import { channelsPost } from "@/lib/blog-channels";
 import { installGuidePost } from "@/lib/blog-install-guide";
+import { subscriptionPost } from "@/lib/blog-subscription";
 
 export type { BlogBlock, BlogPost } from "@/lib/blog-types";
 
@@ -9,6 +11,8 @@ export const blogIndex = {
 };
 
 export const posts: BlogPost[] = [
+  channelsPost,
+  subscriptionPost,
   installGuidePost,
   {
     slug: "iptv-australia-beginners-guide",
