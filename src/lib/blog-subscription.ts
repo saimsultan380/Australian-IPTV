@@ -1,8 +1,8 @@
 import type { BlogPost } from "@/lib/blog-types";
 
 export const subscriptionPost: BlogPost = {
-  slug: "iptv-subscription-australia",
-  path: "/iptv-subscription-australia/",
+  slug: "iptv-subscription-plans-australia",
+  path: "/iptv-subscription-plans-australia/",
   title: "IPTV Subscription Australia: Plans, Prices, Features and How to Choose",
   seoTitle: "IPTV Subscription Australia: Plans, Pricing & Setup Guide",
   description: "Compare IPTV subscription options in Australia, explore plans from $12 AUD, check device compatibility, setup and what to know before you subscribe with us.",

@@ -29,6 +29,17 @@ const nextConfig: NextConfig = {
       { source: "/start/", destination: "/getting-started/", permanent: true },
       { source: "/blogs", destination: "/blog/", permanent: true },
       { source: "/blogs/", destination: "/blog/", permanent: true },
+      // Old indexed URLs → homepage
+      { source: "/b1g-iptv-australia", destination: "/", permanent: true },
+      { source: "/b1g-iptv-australia/", destination: "/", permanent: true },
+      { source: "/sky-glass-iptv", destination: "/", permanent: true },
+      { source: "/sky-glass-iptv/", destination: "/", permanent: true },
+      { source: "/iptv-subscription-australia", destination: "/", permanent: true },
+      { source: "/iptv-subscription-australia/", destination: "/", permanent: true },
+      { source: "/contact-us", destination: "/", permanent: true },
+      { source: "/contact-us/", destination: "/", permanent: true },
+      { source: "/iptv-installation-guide", destination: "/", permanent: true },
+      { source: "/iptv-installation-guide/", destination: "/", permanent: true },
     ];
   },
 };
