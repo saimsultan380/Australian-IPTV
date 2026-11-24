@@ -2,8 +2,12 @@ import type { BlogPost } from "@/lib/blog-types";
 import { channelsPost } from "@/lib/blog-channels";
 import { installGuidePost } from "@/lib/blog-install-guide";
 import { subscriptionPost } from "@/lib/blog-subscription";
+import { onlinePlayerPost } from "@/lib/blog-online-player";
+import { m3uPlaylistPost } from "@/lib/blog-m3u-playlist";
 
 export type { BlogBlock, BlogPost } from "@/lib/blog-types";
+export { onlinePlayerPost } from "@/lib/blog-online-player";
+export { m3uPlaylistPost } from "@/lib/blog-m3u-playlist";
 
 export const blogIndex = {
   title: "Blog",
@@ -11,6 +15,8 @@ export const blogIndex = {
 };
 
 export const posts: BlogPost[] = [
+  onlinePlayerPost,
+  m3uPlaylistPost,
   channelsPost,
   subscriptionPost,
   installGuidePost,
